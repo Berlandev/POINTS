@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "POINTS",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"mesh": "cpp"
+		}
+	}
+}
