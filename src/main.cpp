@@ -15,35 +15,38 @@
 Scheduler userScheduler; // to control your personal task
 painlessMesh  mesh;
 
-// User stub
 
 
 
-
+/*******************************************************************
+ * Mensagem que será broadcastada (sic)
+ *******************************************************************/
 void sendMessage() ; // Prototype so PlatformIO doesn't complain
 Task taskSendMessage( TASK_SECOND * 1 , TASK_FOREVER, &sendMessage );
 
 void sendMessage() {
-  String msg = "(B) Mensagem do B ";
+  String msg = "(C) Mensagem do C ";
   mesh.sendBroadcast( msg );
   taskSendMessage.setInterval( random( TASK_SECOND * 1, TASK_SECOND * 5 ));
 }
 
 // Needed for painless library
 void receivedCallback( uint32_t from, String &msg ) {
-  Serial.printf("(B) Origem: Ponto B (iD: %u) msg=%s\n", from, msg.c_str());
+  String received = String(msg)
+  Serial.printf(""
+  Serial.printf("(C) Origem: Ponto C (iD: %u) msg=%s\n", from, msg.c_str());
 }
 
 void newConnectionCallback(uint32_t nodeId) {
-    Serial.printf("-->(B) startHere: New Connection, nodeId = %u\n", nodeId);
+    Serial.printf("-->(C) startHere: New Connection, nodeId = %u\n", nodeId);
 }
 
 void changedConnectionCallback() {
-  Serial.printf("(B) Changed connections\n");
+  Serial.printf("(C) Changed connections\n");
 }
 
 void nodeTimeAdjustedCallback(int32_t offset) {
-    Serial.printf(" (B) Adjusted time %u. Offset = %d\n", mesh.getNodeTime(),offset);
+    Serial.printf(" (C) Adjusted time %u. Offset = %d\n", mesh.getNodeTime(),offset);
 }
 
 
